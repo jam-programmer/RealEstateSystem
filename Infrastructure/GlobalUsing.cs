@@ -1,0 +1,14 @@
+﻿global using Domain.Entities.Identity;
+global using Infrastructure.Configuration.Extension;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using System.Reflection;
+global using Microsoft.EntityFrameworkCore;
+global using System.Reflection;
+global using Domain;
+global using Domain.Entities.System;
+global using Application.Common;
+global using Infrastructure.Configuration.Context;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
