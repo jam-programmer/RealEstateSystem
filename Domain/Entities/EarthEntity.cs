@@ -46,6 +46,11 @@ public class EarthEntity : BaseEntity<Guid>, IDelete,ICreate,IUpdate
     /// عرض جغرافیایی
     /// </summary>
     public string? Latitude { set; get; }
+   
+    /// <summary>
+    /// نوع معامله
+    /// </summary>
+    public TransactionType Transaction { get; set; }
     /// <summary>
     /// قابل تهاتر
     /// </summary>
