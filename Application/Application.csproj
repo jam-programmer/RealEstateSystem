@@ -26,7 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Command\Category\" />
+    <Folder Include="DataTransferObject\" />
     <Folder Include="Common\Resource\" />
+    <Folder Include="Query\Category\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>

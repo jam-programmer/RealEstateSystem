@@ -19,5 +19,7 @@ public enum InputType
     [Display(Name = "پست الکترونیک")]
     email,
     [Display(Name = "گروه")]
-    Div
+    div,
+    [Display(Name = "توضیحات")]
+    textArea
 }
