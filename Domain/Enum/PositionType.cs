@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Enum;
+﻿namespace Domain.Enum;
 
 public enum PositionType
 {
@@ -13,7 +7,7 @@ public enum PositionType
     [Display(Name = "جنوب")]
     South,
     [Display(Name = "شرق")]
-    West, 
+    West,
     [Display(Name = "غرب")]
     East,
     [Display(Name = "شمال شرقی")]
