@@ -61,7 +61,8 @@ public static class Cofiguration
             cooke.SlidingExpiration = true;
         });
         #endregion
-
+        service.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+        service.AddScoped<IApiService, ApiService>();
         service.AddScoped<IContext, ContextProvider>();
 
         return service;

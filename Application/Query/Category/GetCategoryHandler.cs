@@ -1,0 +1,50 @@
+﻿using Application.Common;
+using Application.Contract;
+using Application.DataTransferObject;
+using Domain.Entities;
+using MediatR;
+using Microsoft.Extensions.Logging;
+
+namespace Application.Query.Category;
+
+internal sealed class GetCategoryHandler :
+    IRequestHandler<GetCategoryQuery, BaseResult<CategoryDto>>
+{
+    private readonly ILogger<GetCategoryHandler> _logger;
+    private readonly IRepository<CategoryEntity, Guid> _categoryRepository;
+
+    public GetCategoryHandler
+        (
+        ILogger<GetCategoryHandler> logger,
+        IRepository<CategoryEntity, Guid> categoryRepository
+        )
+    {
+        _categoryRepository = categoryRepository;
+        _logger = logger;
+    }
+
+
+    public async Task<BaseResult<CategoryDto>> Handle
+        (GetCategoryQuery request, CancellationToken cancellationToken)
+    {
+        try
+        {
+            CategoryDto CategoryDto = await
+                _categoryRepository.
+                GetAsync<CategoryDto>(g=>g.Id==request.Id,null,cancellationToken);
+
+            if(CategoryDto is null)
+            {
+                _logger.LogError
+                    (CustomMessage.NotFoundOnDataBase+$"Id:{request.Id}");
+                return BaseResult<CategoryDto>.Fail(ResultType.System);
+            }
+            return BaseResult<CategoryDto>.Success(CategoryDto);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,ex.Message);
+            return BaseResult<CategoryDto>.Fail(ResultType.System);
+        }
+    }
+}
