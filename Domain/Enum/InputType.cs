@@ -21,5 +21,7 @@ public enum InputType
     [Display(Name = "گروه")]
     div,
     [Display(Name = "توضیحات")]
-    textArea
+    textArea,
+    [Display(Name = "برچسب")]
+    lable
 }
