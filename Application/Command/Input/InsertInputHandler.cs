@@ -17,12 +17,15 @@ internal sealed class InsertInputHandler : IRequestHandler<InsertInputCommand, B
         _inputRepository = inputRepository;
         _logger = logger;
     }
+
+    public IRepository<InputEntity, Guid> InputRepository => _inputRepository;
+
     public async Task<BaseResult> Handle(InsertInputCommand request, CancellationToken cancellationToken)
     {
         try
         {
             var InputEntity = request.InputDto.Adapt<InputEntity>();
-            await _inputRepository.InsertAsync(InputEntity, cancellationToken);
+            await InputRepository.InsertAsync(InputEntity, cancellationToken);
             return BaseResult.Success();
         }
         catch (Exception ex)

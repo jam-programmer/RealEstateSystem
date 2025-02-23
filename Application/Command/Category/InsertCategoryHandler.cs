@@ -18,12 +18,12 @@ internal sealed class InsertCategoryHandler :
 {
     private readonly ILogger<InsertCategoryHandler> _logger;
 
-    private readonly IRepository<CategoryEntity, Guid> _categoryRepository;
+    private readonly IRepository<Domain.Entities.CategoryEntity, Guid> _categoryRepository;
 
     public InsertCategoryHandler
         (
         ILogger<InsertCategoryHandler> logger,
-        IRepository<CategoryEntity, Guid> categoryRepository
+        IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository
         )
     {
         _categoryRepository = categoryRepository;   
@@ -34,7 +34,7 @@ internal sealed class InsertCategoryHandler :
     {
         try
         {
-            CategoryEntity categoryEntity = request.Category.Adapt<CategoryEntity>();
+            Domain.Entities.CategoryEntity categoryEntity = request.Category.Adapt<Domain.Entities.CategoryEntity>();
 
             categoryEntity.ImagePath = request.Category!.ImageFile!.UploadImage("Category");
 

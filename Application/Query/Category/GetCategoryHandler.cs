@@ -11,12 +11,12 @@ internal sealed class GetCategoryHandler :
     IRequestHandler<GetCategoryQuery, BaseResult<CategoryDto>>
 {
     private readonly ILogger<GetCategoryHandler> _logger;
-    private readonly IRepository<CategoryEntity, Guid> _categoryRepository;
+    private readonly IRepository<Domain.Entities.CategoryEntity, Guid> _categoryRepository;
 
     public GetCategoryHandler
         (
         ILogger<GetCategoryHandler> logger,
-        IRepository<CategoryEntity, Guid> categoryRepository
+        IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository
         )
     {
         _categoryRepository = categoryRepository;

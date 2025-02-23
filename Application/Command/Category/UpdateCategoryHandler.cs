@@ -14,12 +14,12 @@ internal sealed class UpdateCategoryHandler :
 {
     private readonly ILogger<UpdateCategoryHandler> _logger;
 
-    private readonly IRepository<CategoryEntity, Guid> _categoryRepository;
+    private readonly IRepository<Domain.Entities.CategoryEntity, Guid> _categoryRepository;
 
     public UpdateCategoryHandler
         (
         ILogger<UpdateCategoryHandler> logger,
-        IRepository<CategoryEntity, Guid> categoryRepository
+        IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository
         )
     {
         _categoryRepository = categoryRepository;
@@ -30,7 +30,7 @@ internal sealed class UpdateCategoryHandler :
     {
         try
         {
-            CategoryEntity? categoryEntity = await _categoryRepository
+            Domain.Entities.CategoryEntity? categoryEntity = await _categoryRepository
                 .GetAsync(g => g.Id == request.Category.Id, cancellationToken);
 
             if (categoryEntity is null)

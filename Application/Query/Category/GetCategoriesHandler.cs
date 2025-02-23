@@ -15,8 +15,8 @@ namespace Application.Query.Category;
 internal sealed class GetCategoriesHandler :
     IRequestHandler<GetCategoriesQusery, PaginatedList<CategoryViewModel>>
 {
-    private readonly IRepository<CategoryEntity,Guid> _categoryRepository;
-    public GetCategoriesHandler(IRepository<CategoryEntity, Guid> categoryRepository)
+    private readonly IRepository<Domain.Entities.CategoryEntity,Guid> _categoryRepository;
+    public GetCategoriesHandler(IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository)
     {
         _categoryRepository = categoryRepository;
     }
@@ -25,7 +25,7 @@ internal sealed class GetCategoriesHandler :
     public async Task<PaginatedList<CategoryViewModel>>
         Handle(GetCategoriesQusery request, CancellationToken cancellationToken)
     {
-        IQueryable<CategoryEntity> query =
+        IQueryable<Domain.Entities.CategoryEntity> query =
        _categoryRepository.GetByQuery();
 
         if (!string.IsNullOrEmpty(request.Pagination.keyword))
@@ -37,7 +37,7 @@ internal sealed class GetCategoriesHandler :
 
         int count = query.Count().PageCount(request.Pagination!.pageSize);
 
-        return await query.MappingedAsync<CategoryEntity, CategoryViewModel>
+        return await query.MappingedAsync<Domain.Entities.CategoryEntity, CategoryViewModel>
             (request.Pagination.curentPage
             , request.Pagination.pageSize, count, null);
     }
