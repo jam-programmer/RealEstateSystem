@@ -1,6 +1,6 @@
 ﻿using Application.Common;
 using Application.Contract;
-using Domain.Entities;
+using Domain.Entities.Dynamic;
 using Mapster;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -10,9 +10,9 @@ namespace Application.Command.Input;
 internal sealed class UpdateInputHandler : IRequestHandler<UpdateInputCommand, BaseResult>
 {
     private readonly ILogger<UpdateInputHandler> _logger;
-    private readonly IRepository<Domain.Entities.InputEntity, Guid> _inputRepository;
+    private readonly IRepository<InputEntity, Guid> _inputRepository;
 
-    public UpdateInputHandler(ILogger<UpdateInputHandler> logger, IRepository<Domain.Entities.InputEntity, Guid> inputRepository)
+    public UpdateInputHandler(ILogger<UpdateInputHandler> logger, IRepository<InputEntity, Guid> inputRepository)
     {
         _inputRepository = inputRepository;
         _logger = logger;
