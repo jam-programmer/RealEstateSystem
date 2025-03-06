@@ -7,8 +7,8 @@ namespace Application.Command.Category;
 public sealed record InsertCategoryCommand : IRequest<BaseResult>
 {
     public CategoryDto Category { get; set; }
-    public InsertCategoryCommand(CategoryDto Category)
+    public InsertCategoryCommand(CategoryDto category)
     {
-        this.Category = Category;
+        Category = category;
     }
 }

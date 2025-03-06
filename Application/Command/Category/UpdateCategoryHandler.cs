@@ -9,18 +9,14 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Command.Category;
 
-internal sealed class UpdateCategoryHandler :
-    IRequestHandler<UpdateCategoryCommand, BaseResult>
+internal sealed class UpdateCategoryHandler : IRequestHandler<UpdateCategoryCommand, BaseResult>
 {
     private readonly ILogger<UpdateCategoryHandler> _logger;
 
-    private readonly IRepository<Domain.Entities.CategoryEntity, Guid> _categoryRepository;
+    private readonly IRepository<CategoryEntity, Guid> _categoryRepository;
 
-    public UpdateCategoryHandler
-        (
-        ILogger<UpdateCategoryHandler> logger,
-        IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository
-        )
+    public UpdateCategoryHandler(ILogger<UpdateCategoryHandler> logger,
+                                 IRepository<CategoryEntity, Guid> categoryRepository)
     {
         _categoryRepository = categoryRepository;
         _logger = logger;
@@ -30,7 +26,7 @@ internal sealed class UpdateCategoryHandler :
     {
         try
         {
-            Domain.Entities.CategoryEntity? categoryEntity = await _categoryRepository
+            CategoryEntity categoryEntity = await _categoryRepository
                 .GetAsync(g => g.Id == request.Category.Id, cancellationToken);
 
             if (categoryEntity is null)
@@ -40,16 +36,13 @@ internal sealed class UpdateCategoryHandler :
             }
 
             request.Category.Adapt(categoryEntity);
-
             if (request.Category.ImageFile is not null)
             {
                 request.Category!.ImagePath!.RemoveImage("Category");
                 categoryEntity.ImagePath = request.Category.ImageFile
                     .UploadImage("Category");
             }
-
             await _categoryRepository.UpdateAsync(categoryEntity, cancellationToken);
-
             return BaseResult.Success();
         }
         catch (Exception ex)

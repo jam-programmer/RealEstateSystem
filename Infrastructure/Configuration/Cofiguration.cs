@@ -1,16 +1,10 @@
-﻿
-
-using Application.Contract;
+﻿using Application.Contract;
 using Infrastructure.Implement;
 
 namespace Infrastructure.Configuration;
-
-
-
 public static class Cofiguration
 {
-    public static IServiceCollection Infrastructure
-          (this IServiceCollection service, IConfiguration configuration)
+    public static IServiceCollection Infrastructure(this IServiceCollection service, IConfiguration configuration)
     {
         service.AddDbContext<SqlServerContext>(option =>
         {

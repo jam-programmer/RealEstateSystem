@@ -1,8 +1,9 @@
-﻿namespace Domain.Entities
+﻿using Domain.Entities.System;
+
+namespace Domain.Entities
 {
-    public class ProvinceEntity
+    public class ProvinceEntity:BaseEntity<Guid>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
