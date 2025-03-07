@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Application.Query.Category;
 
 internal sealed class GetCategoriesHandler :
-    IRequestHandler<GetCategoriesQusery, PaginatedList<CategoryViewModel>>
+    IRequestHandler<GetCategoriesQuery, PaginatedList<CategoryViewModel>>
 {
     private readonly IRepository<Domain.Entities.CategoryEntity,Guid> _categoryRepository;
     public GetCategoriesHandler(IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository)
@@ -23,7 +23,7 @@ internal sealed class GetCategoriesHandler :
 
 
     public async Task<PaginatedList<CategoryViewModel>>
-        Handle(GetCategoriesQusery request, CancellationToken cancellationToken)
+        Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
     {
         IQueryable<Domain.Entities.CategoryEntity> query =
        _categoryRepository.GetByQuery();

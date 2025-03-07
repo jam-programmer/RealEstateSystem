@@ -1,9 +1,8 @@
-﻿using Application.ViewModel;
-using Domain.Enum;
+﻿using Domain.Enum;
 
-namespace Application.DataTransferObject;
+namespace Application.ViewModel;
 
-public sealed record ApartmentDto : RealStateBaseViewModel
+public sealed record ApartmentViewModel : RealStateBaseViewModel
 {
     public int BedRoomNumber { get; set; }
     public int BathroomNumber { get; set; }

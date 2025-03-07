@@ -3,13 +3,12 @@ using Application.Contract;
 using Application.ViewModel;
 using MediatR;
 
-namespace Application.Query.Category;
+namespace Application.Query.Apartment;
 
-public sealed record GetCategoriesQusery :
-    IRequest<PaginatedList<CategoryViewModel>>
+public sealed record GetApartmentsQuery : IRequest<PaginatedList<ApartmentViewModel>>
 {
     public IPagination Pagination { get; set; }
-    public GetCategoriesQusery(IPagination Pagination)
+    public GetApartmentsQuery(IPagination Pagination)
     {
         this.Pagination = Pagination;
     }

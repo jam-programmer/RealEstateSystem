@@ -1,8 +1,8 @@
 ﻿using Domain.Enum;
 
-namespace Application.DataTransferObject;
+namespace Application.ViewModel;
 
-public abstract record RealStateCommonDto
+public abstract record RealStateBaseViewModel
 {
     public Guid Id { get; set; }
     public int CityId { get; set; }
