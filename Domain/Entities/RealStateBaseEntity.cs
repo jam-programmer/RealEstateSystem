@@ -3,7 +3,7 @@ using Domain.Enum;
 
 namespace Domain.Entities
 {
-    public class RealStateCommonEntity : BaseEntity<Guid>
+    public abstract class RealStateBaseEntity : BaseEntity<Guid>
     {
         public int CityId { get; set; }
         public CityEntity City { get; set; }
@@ -18,7 +18,6 @@ namespace Domain.Entities
         public string Description { get; set; }
         public string Name { get; set; }
         public string IndexImage { get; set; }
-        public int MyProperty { get; set; }
         public TransactionType TransactionType { get; set; }
         public UserType UserType { get; set; }
         public PropertyDeedType PropertyDeedType { get; set; }

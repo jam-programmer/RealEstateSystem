@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class ApartmentEntity : RealStateCommonEntity
+    public class ApartmentEntity : RealStateBaseEntity
     {
         public int BedRoomNumber { get; set; }
         public int BathroomNumber { get; set; }
