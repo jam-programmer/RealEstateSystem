@@ -1,6 +1,6 @@
 ﻿using Application.Common;
 using Application.Contract;
-using Domain.Entities;
+using Domain.Entities.Dynamic;
 using Mapster;
 using MediatR;
 using Microsoft.Extensions.Logging;

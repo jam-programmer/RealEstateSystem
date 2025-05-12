@@ -7,16 +7,16 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Query.Category;
 
-internal sealed class GetCategoryHandler :
-    IRequestHandler<GetCategoryQuery, BaseResult<CategoryDto>>
+internal sealed class GetCategoryByIdHandler :
+    IRequestHandler<GetCategoryByIdQuery, BaseResult<CategoryDto>>
 {
-    private readonly ILogger<GetCategoryHandler> _logger;
-    private readonly IRepository<CategoryEntity, Guid> _categoryRepository;
+    private readonly ILogger<GetCategoryByIdHandler> _logger;
+    private readonly IRepository<Domain.Entities.CategoryEntity, Guid> _categoryRepository;
 
-    public GetCategoryHandler
+    public GetCategoryByIdHandler
         (
-        ILogger<GetCategoryHandler> logger,
-        IRepository<CategoryEntity, Guid> categoryRepository
+        ILogger<GetCategoryByIdHandler> logger,
+        IRepository<Domain.Entities.CategoryEntity, Guid> categoryRepository
         )
     {
         _categoryRepository = categoryRepository;
@@ -25,7 +25,7 @@ internal sealed class GetCategoryHandler :
 
 
     public async Task<BaseResult<CategoryDto>> Handle
-        (GetCategoryQuery request, CancellationToken cancellationToken)
+        (GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
         try
         {

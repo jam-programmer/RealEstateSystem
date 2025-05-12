@@ -6,6 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Command\Form\**" />
+    <Compile Remove="Command\Input\**" />
+    <EmbeddedResource Remove="Command\Form\**" />
+    <EmbeddedResource Remove="Command\Input\**" />
+    <None Remove="Command\Form\**" />
+    <None Remove="Command\Input\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewModel\InputViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
