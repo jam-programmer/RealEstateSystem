@@ -3,6 +3,7 @@
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed" dir="rtl" data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template-no-customizer">
   <head>
     <partial name="/Areas/Admin/Pages/Shared/Partial/_Head.cshtml" />
+    @await RenderSectionAsync("Style", false)
   </head>
 
   <body>
@@ -50,6 +51,6 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <partial name="/Areas/Admin/Pages/Shared/Partial/_Script.cshtml" />
-
+    @await RenderSectionAsync("Script",false)
   </body>
 </html>

@@ -1,4 +1,43 @@
 ﻿@page
 @model WebUi.Areas.Admin.Pages.Province.CreateModel
-@{
+
+
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-area="Admin" asp-page="/Dashboard/Index">خانه</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-area="Admin" asp-page="/Province/Index">استان ها</a>
+        </li>
+        <li class="breadcrumb-item active">ایجاد استان </li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-4 offset-4">
+        <form method="post" class="card mb-4">
+            <div class="card-header">
+
+            <h5 class=" heading-color">ایجاد استان </h5>
+                @if (ViewData["Error"] != null)
+                {
+                    <div class="alert alert-warning">@ViewData["Error"]</div>
+                }
+            </div>
+            <div class="card-body">
+                <div>
+                    <label  class="form-label">نام</label>
+                    <input asp-for="Province!.Name" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Province!.Name"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-info text-white">ثبت</button>
+                <a asp-area="Admin" asp-page="/Province/Index" class="btn btn-sm btn-warning">بازگشت</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Script{
+    <partial name="/Areas/Admin/Pages/Shared/_ValidationScriptsPartial.cshtml" />
 }
